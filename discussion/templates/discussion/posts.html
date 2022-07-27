@@ -1,0 +1,69 @@
+{% extends "blog/base.html" %}
+{% block content %}
+      <div class="row">
+        <div class="col-md-8">
+          <legend class="text-center fs-3"> All Posts</legend>
+          {% for post in page_obj %}
+          <article class="media content-section">
+            <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+            <div class="media-body">
+              <div class="article-metadata">
+                <a class="mr-2" href="#">{{ post.author }}</a>
+                <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+              </div>
+              <legend><a class="article-title fs-3" href="{%url 'post-detail' post.id %}">{{ post.title }}</a></legend>
+              <p class="article-content">{{ post.content }}</p>
+              <a href="{%url 'post-detail' post.id %}" class="btn btn-warning btn-sm float-end"><i class="fa fa-comments pr-2" aria-hidden="true"></i>comment</a>
+            </div>
+          </article>
+          {% endfor %}
+          
+          {% if is_paginated %}
+          <div class="text-center my-3">
+          {% if page_obj.has_previous %}
+            <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+          {% endif %}
+    
+          {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+              <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+              <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+          {% endfor %}
+    
+          {% if page_obj.has_next %}
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+          {% endif %}
+          </div>
+        {% endif %}
+        </div>
+        
+        <div class="col-md-4">
+          
+            <div class="content-section">
+              <legend class="text-center fs-4">Categories</legend> 
+              <ul class="list-group form-check">
+                    
+                  {% for category in categories%} 
+                    <li class="list-group-item">
+                      
+                    <a class="category-link" href="{% url 'category-posts' category %}">{{category.name}}</a></span>
+                      
+                      
+                    </li>
+                  {% endfor %}
+                
+
+              </ul>
+                            
+            </div>
+          
+        </div>
+        
+      </div>
+    
+     
+{% endblock content %}

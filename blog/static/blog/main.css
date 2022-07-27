@@ -1,0 +1,139 @@
+body {
+  /*background: #fafafa;*/
+  color: #333333;
+}
+
+main .row .col-md-8 .card .card-body{
+  position: relative;
+}
+main .row .col-md-8 .card-title>a.right-top{
+  position: absolute;
+  top: 5px;
+  left: 95%;
+
+}
+/* navbar styles */
+
+
+.navbar-brand{
+  color: #fff !important;
+  font-weight: 600;
+  font-size: 25px;
+}
+.category-link{
+  color: #000000 !important;
+}
+.nav-link{
+  color: #fff !important;
+  font-weight: 600;
+  font-size: 19px;     
+}
+.category-link{
+  color: black !important;
+  font-weight: 400;
+  font-size: 15px; 
+}
+.nav-choice{
+  color: black !important;
+  font-weight: 400;
+  font-size: 20px;     
+}
+/* cards styles  */
+.card{
+  background: #fff !important;
+  border: none;
+  }
+.card:hover{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.card-detail:hover{
+  box-shadow: none;
+}
+
+
+/* buttons styles */
+.btn:focus,.btn:active {
+    outline:0px !important;
+    box-shadow: none !important;
+    text-decoration: none;
+    }
+/* reviews styles */
+.rate > input {
+  display: none;
+}
+
+.rate > label{
+  float: right;
+}
+
+.rate > label:before{
+  display: inline-block;
+  font-family: FontAwesome;
+  font-size: 1.2rem;
+  padding: 0.2rem;
+  content: "\f005";
+  cursor: pointer;
+}
+input:checked ~ label,label:hover ~ label{
+  color: #ffb503;
+}
+.checked {
+  color: #ffb503;
+}
+/* posts styles */
+.content-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.article-title {
+  color: #444444;
+}
+
+
+a.article-title:hover {
+  color: #428bca;
+  text-decoration: none;
+}
+
+.article-content {
+  white-space: pre-line;
+}
+
+.article-img {
+  height: 65px;
+  width: 65px;
+  margin-right: 16px;
+}
+
+.article-metadata {
+  padding-bottom: 1px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #e3e3e3
+}
+
+.article-metadata a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+.article-svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+.account-img {
+  height: 125px;
+  width: 125px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
+.account-heading {
+  font-size: 2.5rem;
+}
+

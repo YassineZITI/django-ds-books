@@ -1,0 +1,59 @@
+{% extends "blog/base.html" %}
+{% block content %}
+      <div class="row">
+        <div class="col-md-8">
+          
+          {% for post in page_obj %}
+          <article class="media content-section">
+            
+              <div class="article-metadata">
+                <a class="mr-2" href="{% url 'user-posts' object.author.username %}">{{ post.author }}</a>
+                <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+              </div>
+              <h3><a class="article-title" href="{%url 'post-detail' post.id %}">{{ post.title }}</a></h3>
+              <p class="article-content">{{ post.content }}</p>
+            </div>
+          </article>
+          {% endfor %}
+          <div >
+            <a href="{% url 'post-create' category=category topic=topic %}" class="btn btn-outline-secondary">New Post</a>
+          </div>
+          {% if is_paginated %}
+          <div class="text-center my-3">
+          {% if page_obj.has_previous %}
+            <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+          {% endif %}
+    
+          {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+              <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+              <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+          {% endfor %}
+    
+          {% if page_obj.has_next %}
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+          {% endif %}
+          </div>
+        {% endif %}
+        </div>
+        <div class="col-md-4">
+          <div class="content-section">
+            <h3>Our Sidebar</h3>
+            <p class='text-muted'>You can put any information here you'd like.
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-light">Latest Posts</li>
+                <li class="list-group-item list-group-item-light">Announcements</li>
+                <li class="list-group-item list-group-item-light">Calendars</li>
+                <li class="list-group-item list-group-item-light">etc</li>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+    
+     
+{% endblock content %}

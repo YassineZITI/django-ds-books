@@ -1,0 +1,15 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block content %}
+  <div class="row ">
+    <div class="col-md-6 my-5 ">
+    	<img src="{% static 'blog/banner.png' %}" class="img-fluid rounded-pill" style="height: 450px;">
+    </div>
+    <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
+    	<h1 class="text-center text-primary fs-1">Welcome to DSBooks</h1>
+    	<p class="display-6 px-3 my-3 text-center fs-2">Where you will find your Data Science <a href="{%url 'category-list'%}">Books</a> and <a href="{%url 'posts'%}">Discuss</a> your thoughts about Data Science </p>
+    	<a class="btn btn-outline-primary" href="{% url 'register' %}">Sign Up</a>
+    	<p class="text-muted my-3">Already have an account?. <a href="{%url 'login'%}">Sign In</a></p>
+    </div>
+  </div>
+{% endblock content %}

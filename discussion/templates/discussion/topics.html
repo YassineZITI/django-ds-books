@@ -1,0 +1,23 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<div class="container">
+    
+    <center>
+        <h1 class="my-5">{{category}} Topics</h1>
+        <ol class="list-group list-group-numbered" style="width:70%;">
+             
+              {% for topic,count in object %}
+                  <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                      <div class="fw-bold"><a href="{% url 'topic-posts' category=category topic=topic %}" class="category-link">{{topic.title}}</a></div>
+                    </div>
+                    <span class="badge bg-primary rounded-pill">{{count}}</span>
+                  </li>
+                        
+                {% endfor %}
+        </ol>
+    </center>
+</div>      
+    
+      
+{% endblock content %}

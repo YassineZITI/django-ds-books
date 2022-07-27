@@ -1,0 +1,26 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">New Topic</legend>
+                
+                    
+                    <label for="title">Title:</label>
+                    <input name="title" id="title" type="text" class="form-control">
+                    <label for="description">Description:</label>
+                    <textarea name="description" id="description" class="form-control" rows="4" ></textarea>
+                    
+                    
+                  
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Submit</button>
+            </div>
+        </form>
+        
+    </div>
+    
+{% endblock content %}
+

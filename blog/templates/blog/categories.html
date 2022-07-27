@@ -1,0 +1,23 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<div class="container">
+    
+    <center>
+        <h1 class="my-5">Books Categories</h1>
+        <ol class="list-group list-group-numbered" style="width:70%;">
+             
+              {% for category,count in object %}
+                  <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                      <div class="fw-bold"><a href="{% url 'category-books' category %}" class="category-link">{{category.name}}</a></div>
+                    </div>
+                    <span class="badge bg-primary rounded-pill">{{count}}</span>
+                  </li>
+                        
+                {% endfor %}
+        </ol>
+    </center>
+</div>      
+    
+      
+{% endblock content %}

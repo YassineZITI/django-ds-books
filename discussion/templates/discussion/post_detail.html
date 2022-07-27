@@ -1,0 +1,55 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    
+        <article class="media content-section">
+          <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+          <div class="media-body">
+            <div class="article-metadata pb-2">
+              <a class="mr-2" href="#">{{ object.author }}</a>
+              <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
+            <div class="d-flex float-end">
+              {% if object.author == user %}
+              <a class="btn btn-secondary btn-sm mr-1" href="{%url 'post-update' object.id%}">Update</a>
+              <a class="btn btn-danger btn-sm " href="{%url 'post-delete' object.id%}">Delete</a>
+            {% endif %}
+            </div>
+            </div>
+            
+            <h2 class="article-title">{{ object.title }}</h2>
+            <p class="article-content">{{ object.content }}</p>
+            <br><br>
+            {% for comment in comments %}
+            <article class="media content-section">
+              <img class="rounded-circle article-img" src="{{ comment.user.profile.image.url }}">
+              <div class="media-body">
+                <div class="article-metadata">
+                  <a class="mr-2" href="#">{{ comment.user }}</a>
+                  <small class="text-muted">{{ comment.date_posted|date:"F d, Y" }}</small>
+                </div>
+
+                <p class="article-content">{{ comment.content }}</p>
+              </div>
+            </article>
+            {% endfor %}
+            <br>
+            {% if user.is_authenticated %}
+            <h4 class="text-center">Add a Comment</h4>
+            <article class="media content-section">
+              <img class="rounded-circle article-img" src="{{ user.profile.image.url }}">
+              <div class="media-body">
+                
+
+                <form action="{% url 'submit-comment' object.id %}" class="my-3" method="POST">
+                  {%csrf_token%}
+
+                  <textarea name="content" class="form-control" rows="4" ></textarea>
+                  
+                  <button type="submit" name="submit" class="btn btn-warning btn-sm my-1"><i class="fa fa-comments pr-2" aria-hidden="true"></i>comment</a></button>
+                </form>
+              </div>
+            </article>
+            {%endif%}
+          </div>
+        </article>
+    
+{% endblock content %}

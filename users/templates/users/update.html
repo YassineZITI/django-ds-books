@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <center>
+        <div class="card" style="width: 25rem;">
+            <img src="{{user.profile.image.url}}" class="card-img-top rounded-circle w-50 mx-auto mt-2" alt="profile_img">
+            <div class="card-body">
+                
+                <form class="my-3" action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ u_form|crispy}}
+                    {{ p_form|crispy}}
+                    <div class="form-group my-3">
+                        <button class="btn btn-outline-info" type="submit">Save Changes</button>
+                    </div>
+        
+                </form>
+                
+            </div>
+        </div>
+    </center>
+{% endblock %}

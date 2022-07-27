@@ -1,0 +1,87 @@
+{% extends "blog/base.html" %}
+{% block content %}
+  <div class="row">
+    <h1 class="text-center mt-5 mb-3">Free Books</h1>
+    {% for book in page_obj %}
+
+    <div class="col-md-3">
+      <div class="card my-3" style="width: 15rem;">
+        <img src="{{book.image}}" class="card-img-top" alt="{{book.title}}">
+        <div class="card-body text-center">
+          <a class="stretched-link" href="{% url 'book-detail' book.pk %}">{{book.title}}</a>
+          <div class="d-flex px-2 pt-1">
+            <h6 class="me-auto">
+              {%if book.stars == 5%}
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              {%elif book.stars == 4%}
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star "></span>
+              {%elif book.stars == 3%}
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star "></span>
+              <span class="fa fa-star "></span>
+              {%elif book.stars == 2%}
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star "></span>
+              <span class="fa fa-star "></span>
+              <span class="fa fa-star "></span>
+              {%elif book.stars == 1%}
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star "></span>
+              <span class="fa fa-star "></span>
+              <span class="fa fa-star "></span>
+              <span class="fa fa-star "></span>
+              {%elif book.stars == 0%}
+              <span class="fa fa-star "></span>
+              <span class="fa fa-star "></span>
+              <span class="fa fa-star "></span>
+              <span class="fa fa-star "></span>
+              <span class="fa fa-star "></span>
+              {% endif %}
+            </h6>
+            
+            
+            <h6 class="text-danger">Free</h6>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    
+  </div>
+  
+  <div class="my-5">
+    <div class="text-center my-3">
+      {% if page_obj.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+      {% endif %}
+      </div>
+  </div>
+  
+    
+{% endblock content %}
