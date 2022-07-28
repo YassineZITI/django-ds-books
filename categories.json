@@ -1,0 +1,98 @@
+[
+{
+  "model": "blog.category",
+  "pk": 1,
+  "fields": {
+    "name": "Database",
+    "description": ""
+  }
+},
+{
+  "model": "blog.category",
+  "pk": 2,
+  "fields": {
+    "name": "TensorFlow",
+    "description": ""
+  }
+},
+{
+  "model": "blog.category",
+  "pk": 3,
+  "fields": {
+    "name": "Neural Networks",
+    "description": ""
+  }
+},
+{
+  "model": "blog.category",
+  "pk": 4,
+  "fields": {
+    "name": "Hadoop",
+    "description": ""
+  }
+},
+{
+  "model": "blog.category",
+  "pk": 5,
+  "fields": {
+    "name": "NumPy",
+    "description": ""
+  }
+},
+{
+  "model": "blog.category",
+  "pk": 6,
+  "fields": {
+    "name": "Visualization",
+    "description": ""
+  }
+},
+{
+  "model": "blog.category",
+  "pk": 7,
+  "fields": {
+    "name": "Machine Learning",
+    "description": ""
+  }
+},
+{
+  "model": "blog.category",
+  "pk": 8,
+  "fields": {
+    "name": "Analytics",
+    "description": ""
+  }
+},
+{
+  "model": "blog.category",
+  "pk": 9,
+  "fields": {
+    "name": "Apache",
+    "description": ""
+  }
+},
+{
+  "model": "blog.category",
+  "pk": 10,
+  "fields": {
+    "name": "Big Data",
+    "description": ""
+  }
+},
+{
+  "model": "blog.category",
+  "pk": 11,
+  "fields": {
+    "name": "Scala",
+    "description": ""
+  }
+},
+{
+  "model": "blog.category",
+  "pk": 12,
+  "fields": {
+    "name": "Microsoft",
+    "description": ""
+  }
+}
+]
